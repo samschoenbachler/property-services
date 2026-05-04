@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sam's Property Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #2e7d32;
+      --green-light: #43a047;
+      --green-dark: #1b5e20;
+      --gold: #f9a825;
+      --gold-light: #fdd835;
+      --cream: #fafaf7;
+      --charcoal: #1c1c1c;
+      --gray: #666;
+      --light-gray: #f0f0eb;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--charcoal);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(27, 94, 32, 0.97);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      height: 64px;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.2);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.35rem;
+      color: var(--white);
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--charcoal) !important;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-weight: 800 !important;
+      transition: opacity 0.2s, transform 0.15s !important;
+    }
+
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(160deg, rgba(27,94,32,0.92) 0%, rgba(0,0,0,0.6) 100%),
+        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 100px 6% 60px;
+    }
+
+    .hero-inner {
+      max-width: 640px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      border-radius: 6px;
+      padding: 0.7rem 1.1rem;
+      margin-bottom: 1.4rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-badge-region {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.45rem;
+    }
+
+    .hero-badge-cities {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.3px;
+    }
+
+    .hero-inner h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7.5vw, 6rem);
+      color: var(--white);
+      line-height: 0.95;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-inner h1 span { color: var(--gold); }
+
+    .hero-inner p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--charcoal);
+      padding: 0.8rem 1.8rem;
+      border-radius: 5px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.8rem 1.8rem;
+      border-radius: 5px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.5);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .btn-outline:hover { border-color: var(--white); transform: translateY(-2px); }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 6%; }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      line-height: 1;
+      color: var(--charcoal);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title span { color: var(--green); }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); }
+
+    .services-header { margin-bottom: 2.5rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 1.8rem 1.6rem;
+      border-left: 4px solid var(--green);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(46,125,50,0.13);
+      border-color: var(--gold);
+    }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.35rem;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.5px;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ── ABOUT + CONTACT (combined) ── */
+    #about-contact {
+      background: var(--green-dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* left: mission */
+    .mission-side .section-label { color: var(--gold); opacity: 0.85; }
+
+    .mission-side .section-title { color: var(--white); }
+    .mission-side .section-title span { color: var(--gold); }
+
+    .mission-side blockquote {
+      border-left: 3px solid var(--gold);
+      padding-left: 1.1rem;
+      margin: 1.4rem 0;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.75;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .mission-side p {
+      color: rgba(255,255,255,0.7);
+      line-height: 1.75;
+      font-size: 0.95rem;
+      margin-bottom: 0.7rem;
+    }
+
+    /* divider */
+    .section-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.12);
+      align-self: stretch;
+      display: none; /* shown via grid gap */
+    }
+
+    /* right: contact */
+    .contact-side .section-label { color: var(--gold); opacity: 0.85; }
+    .contact-side .section-title { color: var(--white); }
+    .contact-side .section-title span { color: var(--gold); }
+
+    .contact-side > p {
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-details {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .contact-details li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-details .ci {
+      background: rgba(249,168,37,0.15);
+      border: 1px solid rgba(249,168,37,0.35);
+      color: var(--gold);
+      border-radius: 8px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+
+    .contact-details .ct strong {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gold);
+      margin-bottom: 0.1rem;
+      opacity: 0.8;
+    }
+
+    .contact-details .ct a,
+    .contact-details .ct span {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .contact-details .ct a:hover { color: var(--gold); }
+
+    .contact-details .ct .sub-cities {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.15rem;
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 2rem 6%;
+      font-size: 0.85rem;
+    }
+
+    footer strong {
+      color: var(--gold);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+    }
+
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--gold); }
+
+    /* ── ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-outline { text-align: center; }
+      #about-contact { grid-template-columns: 1fr; gap: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Sam's<br><span>Property Services</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about-contact">About</a></li>
+      <li><a href="#about-contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <div class="hero-badge-region">📍 Northwest Metro Atlanta</div>
+        <div class="hero-badge-cities">Kennesaw · Marietta · Smyrna · Woodstock · Acworth · Cartersville · Hiram · Dallas</div>
+      </div>
+      <h1>Your First Call.<br><span>Every Job.</span></h1>
+      <p>From yard work and pressure washing to handyman tasks, deliveries, and junk removal — we handle the jobs you don't have time for.</p>
+      <div class="hero-btns">
+        <a href="#about-contact" class="btn-primary">Get a Free Quote</a>
+        <a href="#services" class="btn-outline">See Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header reveal">
+      <div class="section-label">What We Do</div>
+      <div class="section-title">Our <span>Services</span></div>
+      <p class="section-sub">No job too big or too small. We show up, we work hard, and we get it done right.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-icon">🌿</span>
+        <h3>Yardwork & Lawn Care</h3>
+        <p>Mowing, edging, trimming, leaf removal, mulching, and general yard cleanup.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">🔧</span>
+        <h3>Handyman Tasks</h3>
+        <p>Furniture assembly, minor repairs, hanging items, caulking, and small fixes around the house.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">💦</span>
+        <h3>Pressure Washing</h3>
+        <p>Driveways, sidewalks, decks, siding, and fences — restored to looking their best.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">🚚</span>
+        <h3>Deliveries & Hauling</h3>
+        <p>Local pickups and drop-offs handled quickly and carefully.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">🗑️</span>
+        <h3>Junk Removal</h3>
+        <p>Old furniture, appliances, debris — we load it up and haul it away.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">📋</span>
+        <h3>And More</h3>
+        <p>Have something else in mind? Just ask — if we can handle it, we will.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT + CONTACT (combined) -->
+  <section id="about-contact">
+
+    <!-- LEFT: Mission -->
+    <div class="mission-side reveal">
+      <div class="section-label">Our Mission</div>
+      <div class="section-title">Built on <span>Honest Work</span></div>
+      <blockquote>
+        "We aim to make life easier for our customers by handling the jobs they don't have time for or want to deal with."
+      </blockquote>
+      <p>Through reliable service and honest work, we strive to become your first call — and a trusted recommendation to everyone you know.</p>
+      <p>We're not a big faceless company. We're your neighbor, and we take pride in every job we do, big or small.</p>
+    </div>
+
+    <!-- RIGHT: Contact -->
+    <div class="contact-side reveal">
+      <div class="section-label">Contact Us</div>
+      <div class="section-title">Let's Get <span>To Work</span></div>
+      <p>Ready to check something off your list? Reach out for a free quote — no pressure, no commitment.</p>
+      <ul class="contact-details">
+        <li>
+          <div class="ci">👤</div>
+          <div class="ct">
+            <strong>Contact</strong>
+            <span>Sam Schoenbachler</span>
+          </div>
+        </li>
+        <li>
+          <div class="ci">📞</div>
+          <div class="ct">
+            <strong>Phone / Text</strong>
+            <a href="tel:4043723572">(404) 372-3572</a>
+          </div>
+        </li>
+        <li>
+          <div class="ci">✉️</div>
+          <div class="ct">
+            <strong>Email</strong>
+            <a href="mailto:samschoenbachler554@icloud.com">samschoenbachler554@icloud.com</a>
+          </div>
+        </li>
+        <li>
+          <div class="ci">📍</div>
+          <div class="ct">
+            <strong>Service Area</strong>
+            <span>Northwest Metro Atlanta, GA</span>
+            <span class="sub-cities">Kennesaw · Marietta · Smyrna · Woodstock · Acworth · Cartersville · Hiram · Dallas</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p style="margin-bottom:0.35rem;"><strong>SAM'S PROPERTY SERVICES</strong></p>
+    <p>Northwest Metro Atlanta, GA &nbsp;·&nbsp; <a href="tel:4043723572">(404) 372-3572</a> &nbsp;·&nbsp; <a href="mailto:samschoenbachler554@icloud.com">samschoenbachler554@icloud.com</a></p>
+    <p style="margin-top:0.5rem;">© 2025 Sam's Property Services. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 70);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
