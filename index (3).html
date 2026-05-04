@@ -29,7 +29,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -83,7 +82,6 @@
 
     .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
 
-    /* ── HERO ── */
     #hero {
       min-height: 100vh;
       background:
@@ -180,7 +178,6 @@
 
     .btn-outline:hover { border-color: var(--white); transform: translateY(-2px); }
 
-    /* ── SECTIONS ── */
     section { padding: 80px 6%; }
 
     .section-label {
@@ -209,9 +206,7 @@
       line-height: 1.7;
     }
 
-    /* ── SERVICES ── */
     #services { background: var(--white); }
-
     .services-header { margin-bottom: 2.5rem; }
 
     .services-grid {
@@ -254,7 +249,6 @@
       line-height: 1.6;
     }
 
-    /* ── ABOUT + CONTACT (combined) ── */
     #about-contact {
       background: var(--green-dark);
       display: grid;
@@ -263,9 +257,7 @@
       align-items: start;
     }
 
-    /* left: mission */
     .mission-side .section-label { color: var(--gold); opacity: 0.85; }
-
     .mission-side .section-title { color: var(--white); }
     .mission-side .section-title span { color: var(--gold); }
 
@@ -287,15 +279,6 @@
       margin-bottom: 0.7rem;
     }
 
-    /* divider */
-    .section-divider {
-      width: 1px;
-      background: rgba(255,255,255,0.12);
-      align-self: stretch;
-      display: none; /* shown via grid gap */
-    }
-
-    /* right: contact */
     .contact-side .section-label { color: var(--gold); opacity: 0.85; }
     .contact-side .section-title { color: var(--white); }
     .contact-side .section-title span { color: var(--gold); }
@@ -364,7 +347,6 @@
       font-weight: 600;
     }
 
-    /* ── FOOTER ── */
     footer {
       background: var(--charcoal);
       color: rgba(255,255,255,0.45);
@@ -383,7 +365,6 @@
     footer a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: var(--gold); }
 
-    /* ── ANIMATION ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -397,7 +378,6 @@
 
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── MOBILE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hero-btns { flex-direction: column; }
@@ -408,7 +388,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <div class="nav-logo">Sam's<br><span>Property Services</span></div>
     <ul class="nav-links">
@@ -418,7 +397,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section id="hero">
     <div class="hero-inner">
       <div class="hero-badge">
@@ -434,7 +412,6 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
   <section id="services">
     <div class="services-header reveal">
       <div class="section-label">What We Do</div>
@@ -475,10 +452,7 @@
     </div>
   </section>
 
-  <!-- ABOUT + CONTACT (combined) -->
   <section id="about-contact">
-
-    <!-- LEFT: Mission -->
     <div class="mission-side reveal">
       <div class="section-label">Our Mission</div>
       <div class="section-title">Built on <span>Honest Work</span></div>
@@ -488,8 +462,6 @@
       <p>Through reliable service and honest work, we strive to become your first call — and a trusted recommendation to everyone you know.</p>
       <p>We're not a big faceless company. We're your neighbor, and we take pride in every job we do, big or small.</p>
     </div>
-
-    <!-- RIGHT: Contact -->
     <div class="contact-side reveal">
       <div class="section-label">Contact Us</div>
       <div class="section-title">Let's Get <span>To Work</span></div>
@@ -526,10 +498,8 @@
         </li>
       </ul>
     </div>
-
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p style="margin-bottom:0.35rem;"><strong>SAM'S PROPERTY SERVICES</strong></p>
     <p>Northwest Metro Atlanta, GA &nbsp;·&nbsp; <a href="tel:4043723572">(404) 372-3572</a> &nbsp;·&nbsp; <a href="mailto:samschoenbachler554@icloud.com">samschoenbachler554@icloud.com</a></p>
